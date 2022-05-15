@@ -1,7 +1,6 @@
 import React from "react";
 import Webcam from "react-webcam";
 import '../App.css'
-import OpponentChoice from "./OpponentChoice"
 
 const WebcamPlayer = () => {
     const webcamRef = React.useRef(null);

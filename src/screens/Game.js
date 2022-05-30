@@ -11,7 +11,7 @@ function Game() {
             <WebcamPlayer />
           </div>
           <div className='col-4'>
-            <h1 className='vs'>vs</h1>
+            <h1 className=''>VS</h1>
           </div>
           <div className='col-4'>
             <OpponentChoice />

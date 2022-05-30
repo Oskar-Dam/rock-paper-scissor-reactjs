@@ -9,29 +9,35 @@ function OpponentChoice() {
   const [advImage, setAdvImage] = useState(false);
   const [opponentImage, setOpponentImage] = useState(null);
   const [resultText, setResulText] = useState("");
+  const [pictureIndex , setPictureIndex] = useState(null);
   const elements = [rock, paper, scissor];
   useEffect(() => {
-    if(advImage) {
+   
+      if (pictureIndex === 0) {
+        setResulText("GANADOR")
+      } else if (pictureIndex == 2) {
+        setResulText("EMPATE")
+      } else {
+        setResulText("PERDEDOR")
+      }
 
-      
-    }
-  }, [advImage]);
+  }, [pictureIndex]);
 
   useEffect(() => {
     
       setOpponentImage(opponentImage);
-      setResulText("fdfdfsd")
+      setResulText("")
     
   }, []);
 
   
   const handleImg = () => {
     axios.post('http://localhost:3000/api/image', {
-      image: 'Fred'
+      value: 0
     })
     .then(function (response) {
       console.log(response.data.message);
-      setResulText(response.data.message);
+      setPictureIndex(response.data.message);
       setOpponentImage(elements[response.data.message]);
       setAdvImage(true)
     })

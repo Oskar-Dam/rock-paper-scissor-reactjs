@@ -25,7 +25,7 @@ const WebcamPlayer = () => {
 
     return (
         <div>
-            <h1 style={{'text-align': 'center'}}>Jokalaria</h1>
+            <h1 style={{'textAlign': 'center'}}>Jokalaria</h1>
             {!image ? (
             <div>
                 <Webcam

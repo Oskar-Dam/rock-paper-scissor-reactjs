@@ -10,7 +10,7 @@ const WebcamPlayer = () => {
     const capture = React.useCallback(() => {
         const imageSrc = webcamRef.current.getScreenshot();
         setImage(imageSrc);
-        setResulText("TIJERA")
+        setResulText("GURAIZE")
     }, [webcamRef]);
 
     useEffect(() => {
@@ -18,27 +18,34 @@ const WebcamPlayer = () => {
         setResulText("")
       
     }, []);
+    
+    useEffect(() => {
+        if(!image) setResulText("")     
+    }, [image]);
+
     return (
         <div>
-        {!image ? (
-        <div>
-            <Webcam
-                audio={false}
-                ref={webcamRef}
-                screenshotFormat="image/jpeg"
-                mirrored="true"
-            />
-        </div>
+            <h1 style={{'text-align': 'center'}}>Jokalaria</h1>
+            {!image ? (
+            <div>
+                <Webcam
+                    audio={false}
+                    ref={webcamRef}
+                    screenshotFormat="image/jpeg"
+                    mirrored="true"
+                />
+            </div>
         ) : (
             <img src={image} alt="gure argazkia"/>
+            
         )}
-            <br />
+            
 
-        <div className="multi-button" >
-            <button className="take-pic" onClick={() => (!image ? capture() : setImage(null))}>{!image ? <i className="fa-solid fa-camera"></i> : <i className="fa-solid fa-arrows-rotate"></i>}</button>            
-        </div> 
-        <p className='winner-ph'>{resultText}</p>       
-    </div>
+            <div className="multi-button" >
+                <button className="take-pic" onClick={() => (!image ? capture() : setImage(null))}>{!image ? <i className="fa-solid fa-camera"></i> : <i className="fa-solid fa-arrows-rotate"></i>}</button>            
+            </div> 
+            <p className='winner-ph'>{resultText}</p>       
+        </div>
     );
 };
 
